@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Consent Demo</title>
+</head>
+<body>
+    <h1>Welcome to Your Test Site</h1>
+    <p>This is a live preview of the cookie banner and marketing flow.</p>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" style="position: fixed; bottom:0;left:0;width:100%; background:#f1f1f1; padding:16px; box-shadow:0 -2px 5px rgba(0,0,0,0.1); font-family: Arial,sans-serif;">
+        <p>We use cookies to improve your experience and collect personal data like your email for marketing purposes. By clicking <strong>“Accept”</strong>, you consent to our use and collection of your personal data. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <button id="accept-btn" style="margin-right:8px;padding:8px 12px;background:#007bff;color:#fff;border:none;border-radius:4px;">Accept</button>
+        <button id="reject-btn" style="padding:8px 12px;background:#6c757d;color:#fff;border:none;border-radius:4px;">Reject Non‑Essential Cookies</button>
+    </div>
+
+    <!-- Simulated Marketing Email Form -->
+    <div id="email-form" style="display:none; margin:20px;">
+        <h2>Subscribe to Marketing Emails</h2>
+        <form id="subscribe-form">
+            <input type="email" id="user-email" placeholder="Your email" required />
+            <button type="submit">Subscribe</button>
+        </form>
+        <p id="confirm"></p>
+    </div>
+
+    <script>
+        function setConsent(val){
+            localStorage.setItem('marketingConsent', val);
+        }
+
+        function getConsent(){
+            return localStorage.getItem('marketingConsent');
+        }
+
+        document.getElementById('accept-btn').onclick = () => {
+            setConsent('yes');
+            document.getElementById('cookie-banner').style.display = 'none';
+            document.getElementById('email-form').style.display = 'block';
+        };
+
+        document.getElementById('reject-btn').onclick = () => {
+            setConsent('no');
+            document.getElementById('cookie-banner').style.display = 'none';
+        };
+
+        window.onload = () => {
+            const consent = getConsent();
+            if (consent==='yes') {
+                document.getElementById('cookie-banner').style.display = 'none';
+                document.getElementById('email-form').style.display = 'block';
+            } else if (consent==='no') {
+                document.getElementById('cookie-banner').style.display = 'none';
+            }
+        };
+
+        document.getElementById('subscribe-form').onsubmit = e => {
+            e.preventDefault();
+            const email = document.getElementById('user-email').value;
+            document.getElementById('confirm').textContent = 
+                `✅ You’ve subscribed with ${email}. (In a real setup, an email with unsubscribe link would be sent.)`;
+        };
+    </script>
+</body>
+</html>
