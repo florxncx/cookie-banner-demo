@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Policy - Tan, Chan & Partners</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f8f9fa; margin: 0; padding: 20px; color: #333; }
+        h1 { color: #007bff; }
+        .settings-box { 
+            background: #fff; 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            padding: 20px; 
+            max-width: 500px; 
+            margin: 30px auto;
+        }
+        .settings-box button {
+            display: block; 
+            width: 100%; 
+            margin-top: 10px; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .accept-all { background: #fd7e14; color: #fff; }
+        .necessary-only { background: #6c757d; color: #fff; }
+        .manage-settings { background: #f8f9fa; border: 1px solid #ccc; color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Cookie Policy</h1>
+    <p>Effective Date: 15 July 2025</p>
+    <p>This statement was last updated on <strong>15 July 2025</strong>.</p>
+
+    <h2>What are cookies?</h2>
+    <p>Cookies are small text files that are placed on your computer by websites you visit. They are widely used to make websites work more efficiently and provide information to site owners.</p>
+
+    <h2>Manage your cookie preferences:</h2>
+    <div class="settings-box">
+        <p><strong>Cookies: The choice is yours</strong></p>
+        <p>We use cookies to ensure our site functions well and to continually improve it. Analytics and marketing cookies help us understand user interests and provide personalized experiences.</p>
+        <button class="accept-all" onclick="saveChoice('all')">Accept All Cookies</button>
+        <button class="necessary-only" onclick="saveChoice('necessary')">Necessary Cookies Only</button>
+        <button class="manage-settings" onclick="alert('Here you could add detailed cookie toggles.')">Manage Cookie Settings</button>
+    </div>
+
+    <script>
+        function saveChoice(choice) {
+            localStorage.setItem('cookieChoice', choice);
+            alert('Your cookie preference has been saved: ' + choice);
+        }
+    </script>
+</body>
+</html>
